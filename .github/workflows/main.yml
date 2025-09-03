@@ -1,0 +1,13 @@
+name: 'Deploy to K8S'
+on:
+    push:
+        branches:
+            ["main"]
+jobs:
+    build-and-deploy:
+        runs-on: ["self-hosted"]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Deploy
+              run: kubectl apply -f deployment.yaml
